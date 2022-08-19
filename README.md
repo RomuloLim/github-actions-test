@@ -1,12 +1,3 @@
 teste mergesss
 aaaaaawwdadwa
-
-c
-c
-c
-c
-c
-c
-c
-c
-cwqwdeqwdwqdqwdqwqwdqwd
+jjjj
