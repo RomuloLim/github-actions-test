@@ -28,9 +28,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Create report file
-        run: | 
-          git checkout homol
-          date +%s > report.txt
+        with:
+          ref: homol
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
