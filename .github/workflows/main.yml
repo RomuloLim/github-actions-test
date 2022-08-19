@@ -39,8 +39,8 @@ jobs:
           commit-message: Update Homol with Main
           committer: Github <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.com>
-          branch: main
-          base: homol
+          branch: homol
+          base: main
           title: 'Auto update Homol <- Main'
           body: |
             Update HOMOL with MAIN
