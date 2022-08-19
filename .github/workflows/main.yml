@@ -30,6 +30,9 @@ jobs:
     if: github.event.pull_request.merged == true
     steps:  
       - uses: actions/checkout@v3
+      - name: Make changes to pull request
+        run: date +%s > report.txt
+      
       - name: Raise PR
         id: demo-1
         uses: peter-evans/create-pull-request@v4
@@ -38,6 +41,7 @@ jobs:
           commit-message: Update Homol with Main
           committer: Github <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.com>
+          signoff: false
           branch: homol
           base: main
           title: 'Auto update Homol <- Main'
@@ -50,3 +54,19 @@ jobs:
             automated pr
           assignees: RomuloLim
           reviewers: RomuloLim
+          milestone: 1
+          draft: false
+          
+          
+#       - name: Approve PR
+#         uses: juliangruber/approve-pull-request-action@v1
+#         with:
+#           github-token: ${{ secrets.ACTION_SECRET }}
+#           number: ${{ steps.demo-1.outputs.pull-request-number }}
+
+#       - name: Merge PR
+#         uses: juliangruber/merge-pull-request-action@v1
+#         with:
+#           github-token: ${{ secrets.ACTION_SECRET }}
+#           number: ${{ steps.demo-1.outputs.pull-request-number }}
+#           method: squash
