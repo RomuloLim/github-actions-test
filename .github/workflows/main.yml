@@ -27,9 +27,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Create report file
         with:
           ref: homol
+              
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
