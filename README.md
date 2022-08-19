@@ -1,1 +1,1 @@
-Deus mim ajuda
+vaaaaaaaaaaaaai
