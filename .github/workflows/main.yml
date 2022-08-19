@@ -33,11 +33,11 @@ jobs:
         id: demo-1
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: homol
+          branch: "homol"
           base: main
-          title: Auto update Homol <- Main
-          committer: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}>
-          author: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}>
+          title: "Auto update Homol <- Main"
+          committer: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}''>
+          author: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}''>
           body:
             Automatic PR creation
           token: ${{ secrets.ACTION_SECRET }}
