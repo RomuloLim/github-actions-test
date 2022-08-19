@@ -42,8 +42,8 @@ jobs:
           committer: Github <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.com>
           signoff: false
-          branch: homol
-          base: main
+          branch: main
+          base: homol
           title: 'Auto update Homol <- Main'
           body: |
             Update HOMOL with MAIN
