@@ -22,14 +22,17 @@ jobs:
           
   automerge:
     name: Merge Pull Request
-    uses: actions/github-script@latest
-    with:
-      scripts: |
-        github.pullRequests.merge ({
-          owner: context.payload.repository.owner.login,
-          repo: context.payload.repositoty.name,
-          pull_number: context.payload.pull_request.number
-        })
-        
-        github-token: ${{github.token}}
-    
+    runs-on: [ubuntu-latest]
+    needs: [build]
+    if: github.base_ref == 'main'
+    steps:
+      - name: Merge
+        uses: actions/github-script@v6
+        with:
+          scripts: |
+            github.pullRequests.merge ({
+              owner: context.payload.repository.owner.login,
+              repo: context.payload.repositoty.name,
+              pull_number: context.payload.pull_request.number
+            })
+            github-token: ${{github.token}}
