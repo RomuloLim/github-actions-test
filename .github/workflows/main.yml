@@ -24,25 +24,34 @@ jobs:
           
 
   updatebranches:
-    name: Merge Pull Request
+    name: Update branches
     runs-on: [ubuntu-latest]
     needs: [build]
     if: github.event.pull_request.merged == true
     steps:
+      - uses: actions/checkout@v3
+    
       - name: Raise PR
         id: demo-1
         uses: peter-evans/create-pull-request@v4
         with:
+          token: ${{ secrets.ACTION_SECRET }}
+          commit-message: Update Homol with Main
+          committer: Github <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.com>
           branch: main
           base: homol
-          title: "Auto update Homol <- Main"
-          committer: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}''>
-          author: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}''>
-          body:
-            Automatic PR creation
-          token: ${{ secrets.ACTION_SECRET }}
+          title: 'Auto update Homol <- Main'
+          body: |
+            Update HOMOL with MAIN
+            - Automatic PR creation
           delete-branch: false
-
+          labels: |
+            beta
+            automated pr
+          assignees: RomuloLim
+          reviewers: RomuloLim
+    
       - name: Approve PR
         uses: juliangruber/approve-pull-request-action@v1
         with:
