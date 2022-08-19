@@ -33,8 +33,8 @@ jobs:
         id: demo-1
         uses: peter-evans/create-pull-request@v4
         with:
-          branch: "homol"
-          base: main
+          branch: main
+          base: homol
           title: "Auto update Homol <- Main"
           committer: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}''>
           author: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}''>
