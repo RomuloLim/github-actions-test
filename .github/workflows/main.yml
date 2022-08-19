@@ -29,6 +29,7 @@ jobs:
     needs: [build]
     if: github.event.pull_request.merged == true
     steps:  
+      - uses: actions/checkout@v3
       - name: Raise PR
         id: demo-1
         uses: peter-evans/create-pull-request@v4
