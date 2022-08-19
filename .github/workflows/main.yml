@@ -28,7 +28,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Make changes to pull request
-        run: date +%s > report.txt
+        with:
+          run: |
+            git checkout main
+            git pull origin main
+            git switch -c release/update-homol-with-main
               
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
