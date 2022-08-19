@@ -1,1 +1,1 @@
-jesus mim ajuda
+Deus mim ajuda
