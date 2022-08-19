@@ -1,3 +1,3 @@
 teste merges
  aaaaa
-BBBB
+BBBBccccc
