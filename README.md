@@ -1,1 +1,1 @@
-agora vai mds
+jesus mim ajuda
