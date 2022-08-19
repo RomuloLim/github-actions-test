@@ -1,1 +1,1 @@
-jesus mim ajuda
+meu Deus meu senhor
