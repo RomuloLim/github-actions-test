@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [ closed ]
+    
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: echo Hello, world!
+        
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+          
+
+  createPullRequest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: homol
+
+      - name: Preparing branch
+        run: |
+          git fetch origin main:main
+          git reset --hard main
+        
+      - name: Creating Pull Request
+        uses: peter-evans/create-pull-request@v3
+        id: demo-1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Update HOMOL with MAIN
+          title: '[AUTO PR] Update HOMOL with MAIN'
+          body: >
+            Automated PR to updates HOMOL with MAIN
+          labels: beta, automated pr
+          reviewers: RomuloLim
+          
+#       - name: Approve PR
+#         uses: juliangruber/approve-pull-request-action@v1
+#         with:
+#           github-token: ${{ secrets.ACTION_SECRET }}
+#           number: ${{ steps.demo-1.outputs.pull-request-number }}
+
+#       - name: Merge PR
+#         uses: juliangruber/merge-pull-request-action@v1
+#         with:
+#           github-token: ${{ secrets.ACTION_SECRET }}
+#           number: ${{ steps.demo-1.outputs.pull-request-number }}
+#           method: squash
