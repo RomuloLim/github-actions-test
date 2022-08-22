@@ -40,9 +40,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Update DEV with HOMOL
-          title: '[AUTO PR] Update MAIN with HOMOL'
+          title: '[AUTO PR] Update DEV with HOMOL'
           body: >
-            Automated PR to updates MAIN with HOMOL
+            Automated PR to updates DEV with HOMOL
           labels: beta, automated pr
           reviewers: RomuloLim
           
