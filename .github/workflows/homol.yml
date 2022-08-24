@@ -7,21 +7,7 @@ on:
     types: [ closed ]
     
   workflow_dispatch:
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Run a one-line script
-        run: echo Hello, world!
-        
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-          
+jobs:          
   createPullRequest:
     runs-on: ubuntu-latest
     steps:
@@ -30,19 +16,21 @@ jobs:
           ref: dev
 
       - name: Preparing branch
+        if: github.event.pull_request.merged == true
         run: |
           git fetch origin homol:homol
           git reset --hard homol
         
       - name: Creating Pull Request
+        if: github.event.pull_request.merged == true
         uses: peter-evans/create-pull-request@v3
         id: demo-1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Update DEV with HOMOL
-          title: '[AUTO PR] Update MAIN with HOMOL'
+          title: '[AUTO PR] Update DEV with HOMOL'
           body: >
-            Automated PR to updates MAIN with HOMOL
+            Automated PR to updates DEV with HOMOL
           labels: beta, automated pr
           reviewers: RomuloLim
           
