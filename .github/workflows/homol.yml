@@ -3,7 +3,8 @@ name: HOMOL
 on:
   pull_request:
     branches:
-      - homol
+#      - homol
+      - dev
     types: [ closed ]
     
   workflow_dispatch:
